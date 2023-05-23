@@ -1,27 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>8-Bit RPG</title>
-    <style>
-        #game-container {
-            position: relative;
-            height: 300px;
-            width: 300px;
-            border: 1px solid black;
-        }
-        .character {
-            position: absolute;
-            height: 30px;
-            width: 30px;
-            background-color: blue;
-        }
-    </style>
+    <title>Phaser Game</title>
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3/dist/phaser.min.js"></script>
 </head>
 <body>
-    <div id="game-container">
-        <div id="character" class="character"></div>
-    </div>
+    <script>
+        const config = {
+            type: Phaser.AUTO,
+            width: 800,
+            height: 600,
+            physics: {
+                default: 'arcade',
+                arcade: {
+                    gravity: { y: 200 }
+                }
+            },
+            scene: {
+                preload: preload,
+                create: create
+            }
+        };
 
-    <script src="game.js"></script>
+        let game = new Phaser.Game(config);
+
+        function preload () {
+            this.load.image('sky', 'assets/sky.png');
+        }
+
+        function create () {
+            this.add.image(400, 300, 'sky');
+        }
+    </script>
 </body>
 </html>
+
