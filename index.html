@@ -1,50 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Guess the Number Game</title>
+    <title>8-Bit RPG</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #fafafa;
+        #game-container {
+            position: relative;
+            height: 300px;
+            width: 300px;
+            border: 1px solid black;
         }
-        button {
-            font-size: 20px;
-            padding: 10px 20px;
+        .character {
+            position: absolute;
+            height: 30px;
+            width: 30px;
+            background-color: blue;
         }
     </style>
 </head>
 <body>
-    <button onclick="guessNumber()">Start Game</button>
-    
-    <script>
-        let secretNumber = Math.floor(Math.random() * 100) + 1;
-        let attempts = 0;
+    <div id="game-container">
+        <div id="character" class="character"></div>
+    </div>
 
-        function guessNumber() {
-            let userGuess = prompt("Guess a number between 1 and 100:");
-            attempts++;
-            if(userGuess < secretNumber) {
-                alert("Too low! Try again.");
-                guessNumber();
-            }
-            else if(userGuess > secretNumber) {
-                alert("Too high! Try again.");
-                guessNumber();
-            }
-            else if(userGuess == secretNumber) {
-                alert("Congratulations! You found the number in " + attempts + " attempts.");
-            }
-            else {
-                alert("Invalid input. Please enter a number.");
-                guessNumber();
-            }
-        }
-    </script>
+    <script src="game.js"></script>
 </body>
 </html>
